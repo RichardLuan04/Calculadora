@@ -1,0 +1,60 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculadora{
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #17171C;
+}
+
+header {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.claro-noturno {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resultado, .calculo {
+    width: 100%;
+    height: 35%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+#numero-calculo {
+    color: #ffff;
+    font-size: 5vh;
+    opacity: 40%;
+    margin-right: 20px;
+}
+
+#numero-resultado {
+    color: #ffff;
+    font-size: 10vh;
+    margin-right: 20px;
+}
