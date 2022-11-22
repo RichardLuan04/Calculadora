@@ -16,6 +16,7 @@ body {
     background-color: #17171C;
     border: 10px solid;
     border-radius: 40px;
+    transition: 0.4s;
 }
 
 header {
@@ -41,6 +42,7 @@ header {
     display: flex;
     justify-content: start;
     align-items: center;
+    transition: 0.4s;
 }
 
 #bolinha {
@@ -60,6 +62,30 @@ header {
     filter: drop-shadow(0 0 3px #fff)
 }
 
+@keyframes slide-in {
+    from {
+        transform: translate3d(0, 0, 0);
+    } to {
+        transform: translate3d(110%, 0, 0);
+    }
+}
+
+.bola-animacao-ir{
+    animation: slide-in 0.4s linear forwards;
+}
+
+@keyframes slide-out {
+    from {
+        transform: translate3d(110%, 0, 0);
+    } to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.bola-animacao-voltar{
+    animation: slide-out 0.4s linear forwards;
+}
+
 #lua {
     position: relative;
     width: 30%;
@@ -67,19 +93,17 @@ header {
     filter: invert(100%);
     margin-left: 8px;
     cursor: pointer;
-    transition: 0.4s;
+    transition: 0.3s;
 }
 
 #lua:hover {
     transform: scale(1.1);
 }
 
-
 #sol {
     position: relative;
     width: 40%;
-    height: 70%;
-    filter: invert(100%);
+    height: 75%;
     margin-left: 6px;
     cursor: pointer;
     transition: 0.4s;
@@ -102,12 +126,14 @@ header {
     font-size: 5vh;
     opacity: 40%;
     margin-right: 20px;
+    transition: 0.3s;
 }
 
 #numero-resultado {
     color: #ffff;
     font-size: 10vh;
     margin-right: 20px;
+    transition: 0.3s;
 }
 
 main {
@@ -138,14 +164,16 @@ main {
     font-size: 5vh;
     transition: 0.4s;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .fileira input:hover {
-    filter: drop-shadow(0 0 10px #fff) drop-shadow(0 0 15px #fff3);
+    transform: scale(1.05);
 }
 
 #botao-c, #botao-parenteses, #botao-porcento {
     background-color: #4E505F;
+    transition: 0.3s;
 }
 
 #botao-÷, #botao-x, #botao--, #botao-mais, #botao-igual {
