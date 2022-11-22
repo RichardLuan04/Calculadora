@@ -3,7 +3,7 @@ let clicks = 0
 let animation = 0
 
 function Adicionar(valor) {
-    debugger
+    
     let campo_calculo = document.getElementById('numero-calculo').textContent
     document.getElementById('numero-calculo').innerText = campo_calculo + valor
     contador = 0
@@ -53,7 +53,7 @@ function Voltar_um() {
 }
 
 function Calcular() {
-    debugger
+    
     let campo_calculo = document.getElementById('numero-calculo').textContent
     
     if (campo_calculo) {
