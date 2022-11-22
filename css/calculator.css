@@ -7,25 +7,20 @@ body {
 }
 
 .calculadora{
-    height: 100%;
-    width: 40%;
+    height: 95%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #17171C;
+    border: 10px solid;
+    border-radius: 40px;
 }
 
 header {
     width: 100%;
     height: 30%;
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    width: 100%;
-    height: 60%;
     display: flex;
     flex-direction: column;
 }
@@ -36,6 +31,62 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.base {
+    width: 20%;
+    height: 70%;
+    border-radius: 50px;
+    background-color: #2E2F38;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+#bolinha {
+    position: absolute;
+    z-index: 1;
+    width: 2.5%;
+    height: 5%;
+    border-radius: 100%;
+    background-color: #4E505F;
+    margin-left: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#bolinha:hover {
+    filter: drop-shadow(0 0 3px #fff)
+}
+
+#lua {
+    position: relative;
+    width: 30%;
+    height: 60%;
+    filter: invert(100%);
+    margin-left: 8px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#lua:hover {
+    transform: scale(1.1);
+}
+
+
+#sol {
+    position: relative;
+    width: 40%;
+    height: 70%;
+    filter: invert(100%);
+    margin-left: 6px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#sol:hover {
+    transform: scale(1.1);
 }
 
 .resultado, .calculo {
@@ -57,4 +108,46 @@ main {
     color: #ffff;
     font-size: 10vh;
     margin-right: 20px;
+}
+
+main {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fileira {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.fileira input {
+    height: 11vh;
+    width: 6vw;
+    border: none;
+    background-color: #2E2F38;
+    border-radius: 24px;
+    color: #ffff;
+    font-size: 5vh;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.fileira input:hover {
+    filter: drop-shadow(0 0 10px #fff) drop-shadow(0 0 15px #fff3);
+}
+
+#botao-c, #botao-parenteses, #botao-porcento {
+    background-color: #4E505F;
+}
+
+#botao-÷, #botao-x, #botao--, #botao-mais, #botao-igual {
+    background-color: #4B5EFC;
 }

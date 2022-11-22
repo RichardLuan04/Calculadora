@@ -7,73 +7,81 @@
 
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/calculator.css">
+
+    <script src="./script.js" defer></script>
+
     <title>Calculadora</title>
 </head>
 <body>
     <div class="calculadora">
         <header>
             <div class="claro-noturno">
-                <p>botoes</p>
+                <div class="base">
+                    <input type="button" id="bolinha">
+
+                    <input type="image" id="sol" src="./imgs/sol.webp">
+                    <input type="image" id="lua" src="./imgs/lua.png">
+                </div>
             </div>
 
             <div class="calculo">
-                <p id="numero-calculo">20÷4</p>
+                <p id="numero-calculo"></p>
             </div>
 
             <div class="resultado">
-                <p id="numero-resultado">5</p>
+                <p id="numero-resultado"></p>
             </div>
         </header>
 
         <main>
-            <div class="primeira-fileira">
-                <input type="button" value="C" id="botao-c">
+            <div class="fileira">
+                <input type="button" value="C" id="botao-c" onclick="Limpar()">
 
-                <input type="button" value="()" id="botao-()">
+                <input type="button" value="()" id="botao-parenteses" onclick="Parenteses()">
 
-                <input type="button" value="%" id="botao-%">
+                <input type="button" value="%" id="botao-porcento"  onclick="Operadores('%')">
 
-                <input type="button" value="÷" id="botao-÷">
+                <input type="button" value="÷" id="botao-÷" onclick="Operadores('/')">
             </div>
 
-            <div class="segunda-fileira">
-                <input type="button" value="7" id="botao-7">
+            <div class="fileira">
+                <input type="button" value="7" id="botao-7" onclick="Adicionar('7')">
 
-                <input type="button" value="8" id="botao-8">
+                <input type="button" value="8" id="botao-8" onclick="Adicionar('8')">
 
-                <input type="button" value="9" id="botao-9">
+                <input type="button" value="9" id="botao-9" onclick="Adicionar('9')">
 
-                <input type="button" value="x" id="botao-x">
+                <input type="button" value="x" id="botao-x" onclick="Operadores('*')">
             </div>
 
-            <div class="terceira-fileira">
-                <input type="button" value="4" id="botao-4">
+            <div class="fileira">
+                <input type="button" value="4" id="botao-4" onclick="Adicionar('4')">
 
-                <input type="button" value="5" id="botao-5">
+                <input type="button" value="5" id="botao-5" onclick="Adicionar('5')">
 
-                <input type="button" value="6" id="botao-6">
+                <input type="button" value="6" id="botao-6" onclick="Adicionar('6')">
 
-                <input type="button" value="-" id="botao--">
+                <input type="button" value="-" id="botao--" onclick="Operadores('-')">
             </div>
 
-            <div class="quarta-fileira">
-                <input type="button" value="1" id="botao-1">
+            <div class="fileira">
+                <input type="button" value="1" id="botao-1" onclick="Adicionar('1')">
 
-                <input type="button" value="2" id="botao-2">
+                <input type="button" value="2" id="botao-2" onclick="Adicionar('2')">
 
-                <input type="button" value="3" id="botao-3">
+                <input type="button" value="3" id="botao-3" onclick="Adicionar('3')">
 
-                <input type="button" value="+" id="botao-+">
+                <input type="button" value="+" id="botao-mais" onclick="Operadores('+')">
             </div>
 
-            <div class="quinta-fileira">
-                <input type="button" value="." id="botao-.">
+            <div class="fileira">
+                <input type="button" value="." id="botao-."  onclick="Operadores('.')">
 
-                <input type="button" value="0" id="botao-0">
+                <input type="button" value="0" id="botao-0" onclick="Adicionar('0')">
 
-                <input type="button" value="⌫ " id="botao-excluir">
+                <input type="button" value="⌫ " id="botao-excluir" onclick="Voltar_um()">
 
-                <input type="button" value="=" id="botao-=">
+                <input type="button" value="=" id="botao-igual" onclick="Calcular()">
             </div>
         </main>
     </div>
