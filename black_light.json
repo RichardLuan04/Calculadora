@@ -1,0 +1,20 @@
+{
+    "themes": [
+        {
+            "name": "black",
+            "background": "#17171C",
+            "buttons": "#2E2F38",
+            "color": "#fff",
+            "buttons_top": "#4E505F",
+            "filter": "invert(100%)"
+        },
+        {
+            "name": "light",
+            "background": "#ececec",
+            "buttons": "#fff",
+            "color": "#000",
+            "buttons_top": "#c6c6c6",
+            "filter": "invert(0)"
+        }
+    ]
+}

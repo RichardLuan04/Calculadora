@@ -1,117 +1,104 @@
-let contador = 0
-let clicks = 0
-let animation = 0
+function Calculator() {
+    return {
+        display: document.getElementById("numero-calculo"),
+        result: document.getElementById('numero-resultado'),
+        background: document.querySelector(".calculadora"),
+        buttons_top: document.querySelectorAll(".btn-top"),
+        buttons: document.querySelectorAll(".btn"),
+        base: document.querySelector(".base"),
+        sun: document.querySelector(".soon"),
+        moon: document.querySelector(".moon"),
 
-function Adicionar(valor) {
-    
-    let campo_calculo = document.getElementById('numero-calculo').textContent
-    document.getElementById('numero-calculo').innerText = campo_calculo + valor
-    contador = 0
-}
+        start() {
+            this.clickButtons()
+        },
 
-function Operadores(operador) {
-    contador = contador + 1
-    if (contador < 2){
-        let campo_calculo = document.getElementById('numero-calculo').textContent
-        document.getElementById('numero-calculo').innerText = campo_calculo + operador
-    } else {
-        document.getElementById('numero-resultado').innerText = 'Error'
-    }
-}
+        clickButtons() {
+            document.addEventListener("click", (event) => {
+                let element = event.target
+                
+                if (element.classList.contains('btn-num')) {
+                    this.display.innerHTML = this.display.textContent + element.value
+                }
 
-function Parenteses() {
-    clicks += 1
+                if (element.classList.contains('btn-clear')) {
+                    this.display.innerHTML = ''
+                    this.result.innerHTML = ''
+                }
 
-    if (clicks === 1) {
-        // Abrindo parenteses
+                if (element.classList.contains('btn-resu')) {
+                    this.operation()
+                }
+
+                if (element.classList.contains('btn-del')) {
+                    this.operation()
+                }
+
+                if (element.classList.contains('btn-par')) {
+                    this.parentheses()
+                }
+
+                element.classList.contains('soon') ? this.changeTheme(1) : this.changeTheme(0)
+            })
+        },
+
+        operation() {
+            let conta = this.display.textContent
+
+            try {
+                conta = eval(conta)
+
+                if (!conta) {
+                    alert('Conta inválida')
+                    return
+                }
+
+                this.result.innerHTML = conta
+            } catch (e) {
+                alert('Conta inválida')
+                return
+            }
+        },
+
+        parentheses() {
+            clicks += 1
         
-        let campo_calculo = document.getElementById('numero-calculo').textContent
-        document.getElementById('numero-calculo').innerText = campo_calculo + '('
+            if (clicks === 1) { this.display.innerHTML = this.display.textContent + '(' 
 
-    } else if (clicks === 2){
-        // Fechando Parenteses
+            } else if (clicks === 2){ this.display.innerHTML = this.display.textContent + ')' 
 
-        let campo_calculo = document.getElementById('numero-calculo').textContent
-        document.getElementById('numero-calculo').innerText = campo_calculo + ')'
+            } else {
+                clicks = 0
+                parentheses()
+            }
+        },
 
-    } else {
-        clicks = 0
-        Parenteses()
-    }
-}
+        changeTheme(index) {
+            fetch("black_light.json").then((response) => {
+                response.json().then((themeJson) => {
+                    let theme = themeJson.themes[index]
 
-function Limpar() {
-    document.getElementById('numero-calculo').innerText = ''
-    document.getElementById('numero-resultado').innerText = ''
-    contador = 0
-    clicks = 0
-}
+                    this.background.style.backgroundColor = theme.background
+                    this.base.style.backgroundColor = theme.buttons
 
-function Voltar_um() {
-    let campo_calculo = document.getElementById('numero-calculo').textContent
-    document.getElementById('numero-calculo').innerText = campo_calculo.substring(0, campo_calculo.length - 1)
-}
+                    this.sun.style.filter = theme.filter
+                    this.moon.style.filter = theme.filter
 
-function Calcular() {
-    
-    let campo_calculo = document.getElementById('numero-calculo').textContent
-    
-    if (campo_calculo) {
-        document.getElementById('numero-resultado').innerText = eval(campo_calculo)
-    } else {
-        document.getElementById('numero-resultado').innerText = 'Error'
-    }
-}
+                    for (let button of this.buttons_top) {
+                        button.style.backgroundColor = theme.buttons_top
+                        button.style.color = theme.color
+                    }
 
-let ball = document.getElementById('bolinha')
-
-function Mudar_Tema() {
-
-    if (animation === 0){
-        ball.classList.remove("bola-animacao-voltar")
-        ball.classList.add("bola-animacao-ir")
-        animation++
-
-        //Invertendo cores para claro
-
-        document.querySelector('.calculadora').style.background = '#F1F2F3'
-        document.querySelector('.base').style.background = '#fff'
-        document.getElementById('bolinha').style.background = '#D2D3DA'
-        document.getElementById('numero-calculo').style.color = '#000000'
-        document.getElementById('numero-resultado').style.color = '#000000'  
-        document.getElementById('botao-c').style.background = '#D2D3DA'
-        document.getElementById('botao-c').style.color = '#000'
-        document.getElementById('botao-parenteses').style.background = '#D2D3DA'
-        document.getElementById('botao-parenteses').style.color = '#000'
-        document.getElementById('botao-porcento').style.background = '#D2D3DA'
-        document.getElementById('botao-porcento').style.color = '#000'
-
-        let letras = document.querySelectorAll('.letra')
-        for (let cont = 0; cont<letras.length; cont++){
-            letras[cont].style.color = '#000'
-            letras[cont].style.background = '#fff'
-        }
-        
-    } else if (animation === 1) {
-        ball.classList.add("bola-animacao-voltar")
-        ball.classList.remove("bola-animacao-ir")
-        animation = 0
-
-        // Invertendo cores para escuro
-
-        document.querySelector('.calculadora').style.background = null
-        document.querySelector('.base').style.background = null
-        document.getElementById('bolinha').style.background = null
-        document.getElementById('numero-calculo').style.color = null
-        document.getElementById('numero-resultado').style.color = null
-        document.getElementById('botao-c').style.background = null
-        document.getElementById('botao-parenteses').style.background = null
-        document.getElementById('botao-porcento').style.background = null
-
-        let letras = document.querySelectorAll('.letra')
-        for (let cont = 0; cont< letras.length; cont++){
-            letras[cont].style.color = null
-            letras[cont].style.background = null
+                    for (let button of this.buttons) {
+                        button.style.backgroundColor = theme.buttons
+                        button.style.color = theme.color
+                    }
+                })
+            })
         }
     }
 }
+
+let clicks
+const calculadora = Calculator()
+calculadora.start()
